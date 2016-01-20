@@ -10,11 +10,14 @@ import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.StrokeType;
 import javafx.stage.Stage;
 
 /**
  *
  * @author stefan
+ * http://docs.oracle.com/javase/8/javafx/get-started-tutorial/animation.htm
  */
 public class JavaFXApplication4 extends Application {
     
@@ -23,6 +26,18 @@ public class JavaFXApplication4 extends Application {
         Group root = new Group();
         Scene scene = new Scene(root, 800, 600, Color.BLACK);
         primaryStage.setScene(scene);
+        
+        Group circles = new Group();
+        
+        for (int i = 0; i < 30; i++) {
+            Circle circle = new Circle(150, Color.web("white", 0.05));
+            circle.setStrokeType(StrokeType.OUTSIDE);
+            circle.setStroke(Color.web("white", 0.16));
+            circle.setStrokeWidth(4);
+            circles.getChildren().add(circle);
+        }
+        root.getChildren().add(circles);
+        
 
         primaryStage.show();
     }
