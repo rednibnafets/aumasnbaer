@@ -47,21 +47,21 @@ public class JavaFXApplication4 extends Application {
         
         circles.setEffect(new BoxBlur(10, 10, 3));
         
-Timeline timeline = new Timeline();
-for (Node circle: circles.getChildren()) {
-    timeline.getKeyFrames().addAll(
-        new KeyFrame(Duration.ZERO, // set start position at 0
-            new KeyValue(circle.translateXProperty(), random() * 800),
-            new KeyValue(circle.translateYProperty(), random() * 600)
-        ),
-        new KeyFrame(new Duration(40000), // set end position at 40s
-            new KeyValue(circle.translateXProperty(), random() * 800),
-            new KeyValue(circle.translateYProperty(), random() * 600)
-        )
-    );
-}
-// play 40s of animation
-timeline.play();        
+        Timeline timeline = new Timeline();
+        for (Node circle: circles.getChildren()) {
+            timeline.getKeyFrames().addAll(
+                new KeyFrame(Duration.ZERO, // set start position at 0
+                    new KeyValue(circle.translateXProperty(), random() * 800),
+                    new KeyValue(circle.translateYProperty(), random() * 600)
+                ),
+                new KeyFrame(new Duration(40000), // set end position at 40s
+                    new KeyValue(circle.translateXProperty(), random() * 800),
+                    new KeyValue(circle.translateYProperty(), random() * 600)
+                )
+            );
+        }
+        // play 40s of animation
+        timeline.play();        
         
         
         
