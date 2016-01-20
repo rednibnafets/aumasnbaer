@@ -6,14 +6,20 @@
 package javafxapplication4;
 
 //import java.awt.Color;   // WRONG import for Color!
+import static java.lang.StrictMath.random;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.StrokeType;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  *
@@ -40,6 +46,24 @@ public class JavaFXApplication4 extends Application {
         root.getChildren().add(circles);
         
         circles.setEffect(new BoxBlur(10, 10, 3));
+        
+Timeline timeline = new Timeline();
+for (Node circle: circles.getChildren()) {
+    timeline.getKeyFrames().addAll(
+        new KeyFrame(Duration.ZERO, // set start position at 0
+            new KeyValue(circle.translateXProperty(), random() * 800),
+            new KeyValue(circle.translateYProperty(), random() * 600)
+        ),
+        new KeyFrame(new Duration(40000), // set end position at 40s
+            new KeyValue(circle.translateXProperty(), random() * 800),
+            new KeyValue(circle.translateYProperty(), random() * 600)
+        )
+    );
+}
+// play 40s of animation
+timeline.play();        
+        
+        
         
         primaryStage.show();
     }
